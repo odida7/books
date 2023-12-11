@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 export default function page() {
 
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession(); 
 
   if (status === "unauthenticated") {
     router.replace("/login");
