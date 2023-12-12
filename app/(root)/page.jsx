@@ -1,19 +1,26 @@
-'use client'
 
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation";
 
-export default function Home() {
-  const {data: session, status} = useSession();
-  const router = useRouter();
+import Post from "@/components/Post";
+import { fetchPosts } from '@/lib/actions/post.actions';
 
-  if (status === "unauthenticated"){
-    router.replace('/login')
-  }
+export default async function Home() {
+  
+  const result = await fetchPosts()
+  console.log('result:', result);
+
+ 
 
   return (
     <div>
-      home
+      {result?.posts?.map((post)=>(
+        <Post
+          key={post._id}
+          text={post.text}
+          userId={post.userId}      
+          createdAt={post.createdAt.toLocaleString()}
+        />
+      ))}
+     
     </div>
   )
 }

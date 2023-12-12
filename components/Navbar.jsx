@@ -2,15 +2,20 @@
 
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 
 export default function Navbar() {
   
  const {data: session, status} = useSession();
+const router = useRouter();
+  if (status === "unauthenticated") {
+    router.replace("/login");
+  }
 
   return (
-    <div className='bg-gray-100 flex flex-row items-center justify-between shadow-sm shadow-gray-300'>
+    <div className='bg-gray-100 flex flex-row items-center justify-between shadow-sm shadow-gray-300 static z-10'>
         <div className='flex flex-row items-center gap-4 p-2'>
 
          <Link href={'/'}>
@@ -30,7 +35,7 @@ export default function Navbar() {
             </Link>
 
             <button 
-              onClick={()=> signOut({redirect: false})}
+              onClick={()=> signOut({redirect: true})}
                className='bg-slate-100 text-sm font-light text-slate-500 p-1 sm:p-2 hover:bg-red-600 hover:text-white rounded-full'
             >
                 Logout
