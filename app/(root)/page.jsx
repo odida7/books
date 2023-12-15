@@ -7,18 +7,20 @@ export default async function Home() {
   
   const result = await fetchPosts()
   console.log('result:', result);
-
  
-
-  return (
+  return (  
     <div>
       {result?.posts?.map((post)=>(
+       
         <Post
-          key={post._id}
-          text={post.text}
+          key={post.id}
+          _id={post._id}
+          text={post.text}     
           userId={post.userId}      
           createdAt={post.createdAt.toLocaleString()}
         />
+        
+        
       ))}
      
     </div>
