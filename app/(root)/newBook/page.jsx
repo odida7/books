@@ -36,7 +36,7 @@ export default function page() {
     e.preventDefault();
     try {
      if (user){
-
+   
         setLoading(true);
         const res = await createPost({
           userId: user,   

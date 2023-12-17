@@ -18,9 +18,9 @@ export default async function page({ params }) {
       <h1 className='text-slate-600 text-4xl font-bold'>Book Page</h1>
 
       <div className='flex w-full justify-center mt-10'>
-        <div className='flex flex-col bg-gray-700 w-1/2 p-4 m-4 rounded-md text-white tex-xl font-bold'>
+        <div className='flex flex-col bg-gray-400 w-1/2 p-4 m-4 rounded-md tex-xl font-bold'>
           
-          <span className='text-center m-8'>{posts?.text}</span>
+          <span className='text-center text-white m-8'>{posts?.text}</span>
      
           <div className='flex flex-row w-full justify-between items-center'>
             <span>{posts?.userId}</span>
